@@ -2,10 +2,11 @@ import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Main {
-
+    
     final static byte MONTHS_IN_YEAR = 12;
     final static byte PERCENT = 100;
 
+    //main method
     public static void main(String[] args) {
         int principal = (int) readNumber("Principal: ", 1000, 1_000_000);
         float annualInterest = (float)readNumber("Annual Interest Rate: ", 1, 30);
@@ -15,6 +16,7 @@ public class Main {
         printPaymentSchedule(years, principal, annualInterest);
     }
 
+    //mortgage print method
     private static void printMortgage(int principal, float annualInterest, byte years) {
         double mortgage = calculateMortgage(principal, annualInterest, years);
         String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
@@ -22,6 +24,7 @@ public class Main {
         System.out.println("Monthly Payments: " + mortgageFormatted);
     }
 
+    //payment schedule print method
     private static void printPaymentSchedule(byte years, int principal, float annualInterest) {
         System.out.println("\n" + "PAYMENT SCHEDULE: " + "\n" + "--------------");
         for(short month = 1; month <= years * MONTHS_IN_YEAR; month++){
